@@ -37,11 +37,16 @@ nnoremap <space> za
 
 " enable syntax processing
 syntax on
-filetype on
+filetype plugin indent on
+"set omnifunc=syntaxcomplete#Complete
 
+" Tags settings
+set tags+=~/.vim/tags/tags
+
+" bell off in windows ANNOYINNNNG
+set belloff=all
 
 " Plugins 
-
 call plug#begin()
 
 " colorschemes
@@ -52,11 +57,9 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'scrooloose/nerdtree' 
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'ycm-core/lsp-examples'
-"Plug 'phpactor/phpactor', { 'for': 'php', 'tag': '*', 'do': 'composer install --no-dev -o' }
 Plug 'jayli/vim-easycomplete'
 Plug 'SirVer/ultisnips'
+"Plug 'dense-analysis/ale'
 call plug#end()
 
 " Extra settings to get colors in vim/tmux
@@ -69,24 +72,14 @@ if has('termguicolors')
 	set termguicolors
 endif
 
+" ALE settings
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+
 " EasyComplete settings
 let g:easycomplete_tab_trigger = "<c-space>"
 let easycomplete_scheme = "rider"
-
-" YouCompleteMe settings
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_add_preview_to_completeopt = 1
-
-" YCM LSP config
-"let g:ycm_lsp_dir = '/home/pennywise/.vim/plugged/lsp-examples'
-"let g:ycm_language_server = []
-"let g:ycm_language_server += [
-"     \      {
-"     \          'name': 'php',
-"     \          'cmdline': [ 'php', '-d', 'memory_limit=1024M', g:ycm_lsp_dir . '/php/phpactor/bin/phpactor', 'language-server' ],
-"     \          'filetypes': [ 'php' ],
-"     \      },
-"     \ ]
+let g:easycomplete_diagnostics_enable = 1
 
 " tokyonight configurations
 let g:tokyonight_style = 'night'
