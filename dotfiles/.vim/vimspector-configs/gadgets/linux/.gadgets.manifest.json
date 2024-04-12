@@ -1,0 +1,1 @@
+{"vscode-php-debug": {"version": "v1.33.0", "file_name": "php-debug-1.33.0.vsix", "checksum": "e31252c1bf5d648cea7c6a28a3c7b51a0b886a66f044b5e17118402f14095b76", "download": {"url": "https://github.com/xdebug/vscode-php-debug/releases/download/${version}/${file_name}"}}}

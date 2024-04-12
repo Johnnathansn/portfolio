@@ -1,0 +1,31 @@
+" Vim Variables
+runtime cfgsrc/vimsettings.vim
+
+" key mappings
+runtime cfgsrc/mykeybinds.vim
+
+" Plugins
+runtime cfgsrc/plugins.vim
+
+" VIM-LSP
+runtime cfgsrc/lsp-cfg.vim
+
+" Vimspector
+"let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-configs' )
+"let g:vimspector_enable_mappings='HUMAN'
+
+
+" tokyonight configurations
+let g:tokyonight_style = 'night'
+let g:tokyonight_enable_italic = 1
+
+" sonokai configurations
+let g:sonokai_style = 'default'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 1
+
+" colorscheme selection
+"set background=dark
+colorscheme sonokai
+
+
