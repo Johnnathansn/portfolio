@@ -4,7 +4,7 @@ function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    "nmap <buffer> <leader>gd <plug>(lsp-definition)
+    nmap <buffer> <leader>gd <plug>(lsp-definition)
     nmap <buffer> <leader>gd :tab LspDefinition<cr>
     nmap <buffer> <leader>gs <plug>(lsp-document-symbol-search)
     nmap <buffer> <leader>gS <plug>(lsp-workspace-symbol-search)
@@ -15,8 +15,8 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>[g <plug>(lsp-previous-diagnostics)
     nmap <buffer> <leader>]g <plug>(lsp-next-diagnostic)
     nmap <buffer> <leader>K <plug>(lsp-hover)
-    "nmap <buffer> <leader> <expr><c-f> lsp#scroll(+4)
-    "nmap <buffer> <leader> <expr><c-d> lsp#scroll(-4)
+    nmap <buffer> <leader> <expr><c-f> lsp#scroll(+4)
+    nmap <buffer> <leader> <expr><c-d> lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
@@ -59,15 +59,17 @@ if executable('intelephense')
 endif
 
 " GO
-"augroup LspGo
-"    au!
-"    autocmd User lsp_setup call lsp#register_server({
-"        \'name': 'go-lang',
-"        \'cmd': {server_info->['gopls']},
-"        \'whitelist': ['go'],
-"        \})
-"    autocmd FileType go setlocal omnifunc=lsp#complete
-"    "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
-"    "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
-"    "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error
-"augroup END
+if executable('gopls')
+    augroup LspGo
+        au!
+        autocmd User lsp_setup call lsp#register_server({
+            \'name': 'gopls',
+            \'cmd': {server_info->['gopls']},
+            \'whitelist': ['go'],
+            \})
+        autocmd FileType go setlocal omnifunc=lsp#complete
+        "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
+        "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
+        "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
+    augroup END
+endif

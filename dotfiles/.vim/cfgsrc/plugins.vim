@@ -9,7 +9,7 @@ Plug 'ghifarit53/tokyonight-vim'
 " plugins
 
 "file management
-Plug 'scrooloose/nerdtree' 
+"Plug 'scrooloose/nerdtree' 
 
 " Debug
 Plug 'puremourning/vimspector'
@@ -23,5 +23,8 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+
+" Outline bar
+Plug 'liuchengxu/vista.vim'
 
 call plug#end()
