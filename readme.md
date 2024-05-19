@@ -1,3 +1,1 @@
-Here are a few projects that I did for Applied Web Development in BCIT or online courses.
-
-I will continue to add more projects, but for now these are afew simple examples to show what I can do. 
+Repository that I keep mydotfiles and some projects I work on (studies or professionally).
