@@ -1,5 +1,4 @@
 " VIM-LSP
-
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -15,11 +14,15 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>[g <plug>(lsp-previous-diagnostics)
     nmap <buffer> <leader>]g <plug>(lsp-next-diagnostic)
     nmap <buffer> <leader>K <plug>(lsp-hover)
-    nmap <buffer> <leader> <expr><c-f> lsp#scroll(+4)
-    nmap <buffer> <leader> <expr><c-d> lsp#scroll(-4)
+    nmap <buffer> <leader>P <plug>(lsp-code-action-float)
+
+    nmap <expr><buffer> <c-f> popup_list()->empty() ? '<c-f>' : lsp#scroll(+4)
+    nmap <expr><buffer> <c-d> popup_list()->empty() ? '<c-d>' : lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    autocmd! BufWritePre *.go call execute('LspDocumentFormatSync') | call execute('LspCodeActionSync source.organizeImports')
+    autocmd! BufWritePre *.cpp,*.c,*.cxx,*.h,*.hpp call execute('LspDocumentFormatSync')
+    autocmd! BufWritePre *.vue call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
@@ -68,8 +71,13 @@ if executable('gopls')
             \'whitelist': ['go'],
             \})
         autocmd FileType go setlocal omnifunc=lsp#complete
-        "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
-        "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
-        "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
     augroup END
 endif
+
+" CPP
+if executable('clangd')
+    autocmd FileType cpp,c,objc,objcpp setlocal omnifunc=lsp#complete
+endif
+
+" Typescript, JS, React, Vue
+autocmd FileType vue let g:lsp_settings_filetype_vue = ["volar-server","typescript-language-server"]

@@ -1,37 +1,43 @@
-# Vim Variables
+" Vim Variables
 runtime cfgsrc/vimsettings.vim
 
-# key mappings
+" key mappings
 runtime cfgsrc/mykeybinds.vim
 
-# Plugins
+" Plugins
 runtime cfgsrc/plugins.vim
 
-# VIM-LSP
+" VIM-LSP
 runtime cfgsrc/lsp-cfg.vim
-#let g:lsp_log_verbose = 1
-#let g:lsp_log_file = expand('~/.vim/log/vim-lsp.log')
+"let g:lsp_log_verbose = 1
+"let g:lsp_log_file = expand('~/.vim/log/vim-lsp.log')
 
-# Vimspector
+" Vimspector
 let g:vimspector_base_dir=expand( '$HOME/.vim/vimspector-configs' )
 let g:vimspector_enable_mappings='HUMAN'
+let g:vimspector_variables_display_mode='full'
 
-# Vista - tagbar replacement
-#let g:vista#renderer#ctags = 'kind'
+" Codeium
+let g:codeium_disable_bindings = 1
+
+" Vista - tagbar replacement
+"let g:vista#renderer#ctags = 'kind'
 let g:vista#renderer#enable_icon = 1
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 
-# tokyonight configurations
+" tokyonight configurations
 let g:tokyonight_style = 'night'
 let g:tokyonight_enable_italic = 1
 
-# sonokai configurations
+" sonokai configurations
 let g:sonokai_style = 'default'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 1
 
-# colorscheme selection
-#set background=dark
-colorscheme sonokai
+" gruvbox configurations
+let g:gruvbox_contrast_dark = 'soft'
 
+" colorscheme selection
+set background=dark
+colorscheme gruvbox
 

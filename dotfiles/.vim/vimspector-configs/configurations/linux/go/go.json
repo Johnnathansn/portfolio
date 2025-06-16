@@ -1,0 +1,34 @@
+{
+    "configurations": {
+        "Go Delve VSCode DAP": {
+            "adapter": "vscode-go",
+            "configuration": {
+                "showLog": true,
+                "request": "launch",
+                "program": "${fileDirname}",
+                "mode": "debug",
+                "dlvToolPath": "${GOPATH}/bin/dlv"
+            }
+        },
+        "Go Delve DAP": {
+            "adapter": "delve",
+            "configuration": {
+                "showLog": true,
+                "request": "launch",
+                "program": "${fileDirname}",
+                "mode": "debug",
+                "dlvToolPath": "${GOPATH}/bin/dlv"
+            }
+        },
+        "Go Delve Tests DAP": {
+            "adapter": "delve",
+            "configuration": {
+                "showLog": true,
+                "request": "launch",
+                "program": "${fileDirname}",
+                "mode": "test",
+                "dlvToolPath": "${GOPATH}/bin/dlv"
+            }
+        }
+    }
+}
